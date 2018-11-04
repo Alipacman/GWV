@@ -30,8 +30,8 @@ def array_into_gamefield(array):
 gamefield = open('blatt3_environment.txt', 'r').read()
 
 gamefield_width = gamefield.find("\n")
-#TODO: Height not working with: (len(gamefield)/gamefield_width)
-gamefield_height = 10
+gamefield_height = int((len(gamefield) - 9)/gamefield_width)
+
 
 gamefield_array = gamefield_into_array(gamefield_height, gamefield_width)
 
