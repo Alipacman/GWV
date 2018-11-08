@@ -1,3 +1,9 @@
+from .Graph import Graph
+from .Vertex import Vertex
+from .Edge import Edge
+
+
+
 #TODO: convert this to: txt_into_Graph
 
 #Methods for string array switch
@@ -26,3 +32,9 @@ def array_into_gamefield(array):
 
 #gameFields
 gamefield = open('blatt3_environment.txt', 'r').read()
+
+def main():
+    print("starting main")
+
+if __name__ == "__main__":
+    main()
