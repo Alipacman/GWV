@@ -1,4 +1,4 @@
-from.Vertex import *
+from .Vertex import *
 import numpy as np
 
 
@@ -7,11 +7,11 @@ class GameField:
     gamefieldArray = []
 
     def __init__(self, fieldString):
-        self.gamefieldArray = self.gamefield_str_into_array(fieldString)
+        self.gamefield_array = self.gamefield_str_into_array(fieldString)
         self.gamefield_width = len(self.gamefieldArray[0])
         self.gamefield_height = len(self.gamefieldArray)
 
-    def gamefield_str_into_array(gamefield_str):
+    def gamefield_str_into_array(self, gamefield_str):
         """
         Converts a gamefield stored as a string into a gamefield array
         """
@@ -27,7 +27,7 @@ class GameField:
 
         return gamefield_array
 
-    def gamefield_array_into_str(array):
+    def gamefield_array_into_str(self, array):
         """
         Converts a gamefield arry into a string representation
         """
@@ -60,5 +60,6 @@ class GameField:
             "g": Vertex_type.goal,
             "s": Vertex_type.goal,
         }
+        
         return switcher.get(self.gamefieldArray[vertex.y][vertex.x])
 
