@@ -1,3 +1,5 @@
+from.Vertex import *
+
 class GameField:
 
     self.gamefield_width = len(gamefieldArray[0])
@@ -6,6 +8,9 @@ class GameField:
     def __init__(self, fieldString):
 
     def check_possible_field(y_pos, x_pos):
-        return (((y_pos <= gamefield_height and y_pos >= 0) and
-                 (x_pos <= gamefield_width and x_pos >= 0 )) and
-                (gamefield_array[y_pos][x_pos] != "x"))
+        return (gamefield_array[y_pos][x_pos] != "x"))
+
+    def get_vertex_type(vertex : Vertex) -> Type:
+            if ((vertex.y <= gamefield_height and vertex.y >= 0) and
+              (vertex.x <= gamefield_width and vertex.x >= 0 )):
+                return Type.unvisited
