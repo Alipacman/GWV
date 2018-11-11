@@ -8,8 +8,8 @@ class GameField:
 
     def __init__(self, fieldString):
         self.gamefieldArray = self.gamefield_str_into_array(fieldString)
-        self.gamefield_width = len(gamefieldArray[0])
-        self.gamefield_height = len(gamefieldArray)
+        self.gamefield_width = len(self.gamefieldArray[0])
+        self.gamefield_height = len(self.gamefieldArray)
 
     def gamefield_str_into_array(gamefield_str):
         """
@@ -42,14 +42,14 @@ class GameField:
 
         return gamfield_str
 
-    def check_possible_field(y_pos, x_pos):
-        return not ((vertex.y <= gamefield_height and vertex.y >= 0) and
-                (vertex.x <= gamefield_width and vertex.x >= 0 )) or (gamefield_array[y_pos][x_pos] != "x")
+    def check_possible_field(self, y_pos, x_pos):
+        return not ((y_pos <= self.gamefield_height and y_pos >= 0) and
+                (x_pos <= self.gamefield_width and x_pos >= 0 )) or (self.gamefield_array[y_pos][x_pos] != "x")
 
-    def get_vertex_type(vertex : Vertex) -> Type:
+    def get_vertex_type(self, vertex : Vertex) -> Type:
 
-        if ((vertex.y <= gamefield_height and vertex.y >= 0) and
-          (vertex.x <= gamefield_width and vertex.x >= 0 )):
+        if ((vertex.y <= self.gamefield_height and vertex.y >= 0) and
+          (vertex.x <= self.gamefield_width and vertex.x >= 0 )):
             return Type.unvisited
 
         switcher = {

@@ -25,19 +25,19 @@ class Vertex:
         self.type = type
 
 
-    def getNeighbours(gamefield):
-        if (gamefield.check_possible_field(y + 1,x) :
-            new_neighbour = Vertex(y_pos, x_pos,gamefield.get_vertex_type(new_neighbour),Edge(1,self, new_neighbour))
-            outgoing_edges.append(outgoing_edges)
-        if (gamefield.check_possible_field(y,x + 1) :
-            new_neighbour = Vertex(y_pos, x_pos,gamefield.get_vertex_type(new_neighbour),Edge(1,self, new_neighbour))
-            outgoing_edges.append(new_neighbour)
-        if (gamefield.check_possible_field(y - 1,x) :
-            new_neighbour = Vertex(y_pos, x_pos,gamefield.get_vertex_type(new_neighbour),Edge(1,self, new_neighbour))
-            outgoing_edges.append(new_neighbour)
-        if (gamefield.check_possible_field(y,x - 1) :
-            new_neighbour = Vertex(y_pos, x_pos,gamefield.get_vertex_type(new_neighbour),Edge(1,self, new_neighbour))
-            outgoing_edges.append(new_neighbour)
+    def getNeighbours(self, gamefield):
+        if (gamefield.check_possible_field(y + 1,x)):
+            new_neighbour = Vertex(self.y_pos, self.x_pos,gamefield.get_vertex_type(new_neighbour),Edge(1,self, new_neighbour))
+            self.outgoing_edges.append(self.outgoing_edges)
+        if (gamefield.check_possible_field(y,x + 1)):
+            new_neighbour = Vertex(self.y_pos, self.x_pos,gamefield.get_vertex_type(new_neighbour),Edge(1,self, new_neighbour))
+            self.outgoing_edges.append(new_neighbour)
+        if (gamefield.check_possible_field(y - 1,x)):
+            new_neighbour = Vertex(self.y_pos, self.x_pos,gamefield.get_vertex_type(new_neighbour),Edge(1,self, new_neighbour))
+            self.outgoing_edges.append(new_neighbour)
+        if (gamefield.check_possible_field(y,x - 1)):
+            new_neighbour = Vertex(self.y_pos, self.x_pos,gamefield.get_vertex_type(new_neighbour),Edge(1,self, new_neighbour))
+            self.outgoing_edges.append(new_neighbour)
 
 
     def __eq__(self, other):
