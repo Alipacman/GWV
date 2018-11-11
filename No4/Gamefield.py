@@ -2,7 +2,7 @@ from .Vertex import *
 import numpy as np
 
 
-class GameField:
+class Gamefield:
 
     gamefieldArray = []
 
@@ -60,6 +60,6 @@ class GameField:
             "g": Vertex_type.goal,
             "s": Vertex_type.goal,
         }
-        
+
         return switcher.get(self.gamefieldArray[vertex.y][vertex.x])
 
