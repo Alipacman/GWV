@@ -42,6 +42,9 @@ class Vertex:
     def check_neighbour_eq_parent(self, other):
         return self.parentEdge.source_vertex == other
 
+    def is_goal(self):
+        return self.type == Vertex_type.goal
+
 
     def __eq__(self, other):
         """Overrides the default implementation"""
