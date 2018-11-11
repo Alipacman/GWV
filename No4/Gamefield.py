@@ -43,9 +43,11 @@ class GameField:
         return gamfield_str
 
     def check_possible_field(y_pos, x_pos):
-        return (gamefield_array[y_pos][x_pos] != "x"))
+        return not ((vertex.y <= gamefield_height and vertex.y >= 0) and
+                (vertex.x <= gamefield_width and vertex.x >= 0 )) or (gamefield_array[y_pos][x_pos] != "x")
 
     def get_vertex_type(vertex : Vertex) -> Type:
+
         if ((vertex.y <= gamefield_height and vertex.y >= 0) and
           (vertex.x <= gamefield_width and vertex.x >= 0 )):
             return Type.unvisited
@@ -58,5 +60,5 @@ class GameField:
             "g": Type.goal,
             "s": Type.goal,
         }
-        return switcher
+        return switcher.get(self.gamefieldArray[vertex.y][vertex.x])
 
