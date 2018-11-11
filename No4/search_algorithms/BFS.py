@@ -13,11 +13,11 @@ def breadth_first_search(graph, start_node):
         if (last_node.is_goal):
             return path
         else:
-            neighbours = last_node.get_neighbours
+            neighbours = last_node.get_neighboursqwewe
 
             for n in neighbours:
                 frontier.append(path.copy().append(n))
-    return false
+    return False
 
 
 

@@ -62,3 +62,8 @@ class GameField:
         }
         return switcher.get(self.gamefieldArray[vertex.y][vertex.x])
 
+
+    def print_path(self, path : [Vertex]):
+        for vertex in path:
+            self.gamefieldArray[vertex.y][vertex.x] = "."
+        print (self.gamefield_array_into_str(self.gamefieldArray))
