@@ -22,8 +22,7 @@ class Vertex:
         self.parentEdge = Edge(1,parentVertex, self)
         if type not in (Vertex_type.unvisited, Vertex_type.visited, Vertex_type.blocked, Vertex_type.start, Vertex_type.goal, Vertex_type.portal):
              raise ValueError('type not valid')
-        self.type = type
-        gamefield.get_vertex_type(self)
+        self.type = gamefield.get_vertex_type(self)
 
 
     def getNeighbours(self, gamefield):
