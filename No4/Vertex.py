@@ -25,19 +25,20 @@ class Vertex:
         self.type = gamefield.get_vertex_type(self)
 
 
-    def getNeighbours(self, gamefield):
+    def get_neighbours(self, gamefield):
         if (gamefield.check_possible_field(self.y + 1, self.x)):
-            neighbour_up = Vertex(self.y_pos + 1, self.x_pos, self, gamefield)
-            self.outgoing_edges.append(self.neighbour_up)
+            neighbour_up = Vertex(self.y + 1, self.x, self, gamefield)
+            self.neighbours.append(neighbour_up)
         if (gamefield.check_possible_field(self.y, self.x + 1)):
-            neighbour_right = Vertex(self.y_pos, self.x_pos + 1, self, gamefield)
-            self.outgoing_edges.append(neighbour_right)
+            neighbour_right = Vertex(self.y, self.x + 1, self, gamefield)
+            self.neighbours.append(neighbour_right)
         if (gamefield.check_possible_field(self.y - 1, self.x)):
-            neighbour_down = Vertex(self.y_pos - 1, self.x_pos, self, gamefield)
-            self.outgoing_edges.append(neighbour_down)
+            neighbour_down = Vertex(self.y - 1, self.x, self, gamefield)
+            self.neighbours.append(neighbour_down)
         if (gamefield.check_possible_field(self.y, self.x - 1)):
-            neighbour_left = Vertex(self.y_pos, self.x_pos - 1, self, gamefield)
-            self.outgoing_edges.append(neighbour_left)
+            neighbour_left = Vertex(self.y, self.x - 1, self, gamefield)
+            self.neighbours.append(neighbour_left)
+        return self.neighbours
 
     def check_neighbour_eq_parent(self, other):
         return self.parentEdge.source_vertex == other
