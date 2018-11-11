@@ -1,23 +1,28 @@
 from .Graph import Graph
 from .Vertex import Vertex
 from .Edge import Edge
+import numpy as np
 
+def gamefield_str_into_array(gamefield_str):
+    """
+    Converts a gamefield stored as a string into a gamefield array
+    """
 
-
-#TODO: convert this to: txt_into_Graph
-
-#Methods for string array switch
-def gamefield_into_array(height, width):
+    width = gamefield_str.find("\n")
+    height = int((len(gamefield_str) - 9)/width)
 
     gamefield_array = np.empty(shape=[height, width], dtype ="str")
 
     for y in range(height):
         for x in range(width):
-            gamefield_array[y][x] = gamefield[((y * width + 1 * y) + x)]
+            gamefield_array[y][x] = gamefield_str[((y * width + 1 * y) + x)]
 
     return gamefield_array
 
-def array_into_gamefield(array):
+def gamefield_array_into_str(array):
+    """
+    Converts a gamefield arry into a string representation
+    """
 
     gamfield_str = ""
 
@@ -29,12 +34,11 @@ def array_into_gamefield(array):
 
     return gamfield_str
 
-
-#gameFields
-gamefield = open('blatt3_environment.txt', 'r').read()
-
 def main():
-    print("starting main")
+    print("Setting up the gamefield...")
+    
+    #gameFields
+    gamefield = gamefield_str_into_array(open('blatt3_environment.txt', 'r').read())
 
 if __name__ == "__main__":
     main()
