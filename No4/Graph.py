@@ -6,11 +6,10 @@ from .Edge import Edge
 
 class Graph:
 
-    edges = []
-    vertexes = []
+    vertices = []
 
-    def __init__(self, start_x_pos, start_y_pos):
+
+    def __init__(self, gamefieldArray, start_x_pos, start_y_pos):
         start_vertex = Vertex(start_x_pos, start_y_pos)
+        self.gamefieldArray
         self.vertexes.append(start_vertex)
-
-
