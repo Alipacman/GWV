@@ -63,6 +63,13 @@ class GameField:
         return switcher.get(self.gamefieldArray[vertex.y][vertex.x])
 
 
+    def find_start_index(self):
+        for y in range(self.gamefield_height):
+            for x in range(self.gamefield_width):
+                if self.gamefieldArray[y][x] == "s":
+                    return (y,x)
+
+
     def print_path(self, path : [Vertex]):
         for vertex in path:
             self.gamefieldArray[vertex.y][vertex.x] = "."
