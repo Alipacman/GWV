@@ -9,13 +9,13 @@ def main():
     
     #gameFields
 
-    gamefield = Gamefield(open('simple.txt', 'r').read())
+    gamefield = Gamefield(open('blatt4_environment_b.txt', 'r').read())
 
     start_index = gamefield.find_start_index()
     start_node = Vertex(start_index[0], start_index[1], None, gamefield)
     
-    dfs_path = depth_first_search(start_node)
-    gamefield.print_path(dfs_path)
+   # dfs_path = depth_first_search(start_node)
+    #gamefield.print_path(dfs_path)
 
     bfs_path = breadth_first_search(start_node)
     gamefield.print_path(bfs_path)

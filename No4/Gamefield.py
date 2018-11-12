@@ -69,6 +69,11 @@ class Gamefield:
                 if self.gamefield_array[y][x] == "s":
                     return (y,x)
 
+    def find_portal_exit(self, vertex : Vertex):
+        for y in range(self.gamefield_height):
+            for x in range(self.gamefield_width):
+                if (self.gamefield_array[y][x] == self.gamefield_array[vertex.y][vertex.x]) and (vertex.x != x or vertex.y != y):
+                    return (y,x)
 
     def print_path(self, path : [Vertex]):
         for vertex in path:
