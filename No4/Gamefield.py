@@ -17,7 +17,7 @@ class Gamefield:
         """
 
         width = gamefield_str.find("\n")
-        height = int((len(gamefield_str) - 9)/width)
+        height = int(len(gamefield_str)/width) 
 
         gamefield_array = np.empty(shape=[height, width], dtype ="str")
 
@@ -43,13 +43,13 @@ class Gamefield:
         return gamfield_str
 
     def check_possible_field(self, y_pos, x_pos):
-        return not ((y_pos <= self.gamefield_height and y_pos >= 0) and
-                (x_pos <= self.gamefield_width and x_pos >= 0 )) or (self.gamefield_array[y_pos][x_pos] != "x")
+        return not (y_pos >= self.gamefield_height or y_pos < 0 or
+                x_pos >= self.gamefield_width or x_pos < 0 or self.gamefield_array[y_pos][x_pos] == "x")
 
     def get_vertex_type(self, vertex : Vertex) -> Vertex_type:
 
-        if ((vertex.y <= self.gamefield_height and vertex.y >= 0) and
-          (vertex.x <= self.gamefield_width and vertex.x >= 0 )):
+        if (vertex.y >= self.gamefield_height or vertex.y < 0 or
+            vertex.x >= self.gamefield_width or vertex.x < 0):
             return Vertex_type.unvisited
 
         switcher = {
@@ -58,9 +58,8 @@ class Gamefield:
             "1": Vertex_type.portal,
             "2": Vertex_type.portal,
             "g": Vertex_type.goal,
-            "s": Vertex_type.goal,
+            "s": Vertex_type.unvisited,
         }
-
         return switcher.get(self.gamefield_array[vertex.y][vertex.x])
 
 

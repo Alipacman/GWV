@@ -5,7 +5,6 @@ def breadth_first_search(start_node):
     frontier = deque([[start_node]])
 
     while len(frontier) != 0:
-        print(frontier)
 
         path = frontier.popleft()
         last_node = path[-1]
@@ -17,11 +16,8 @@ def breadth_first_search(start_node):
         else:
             neighbours = last_node.get_neighbours()
 
-            print(neighbours)
-
             for n in neighbours:
-                frontier.append(path.copy().append(n))
+                if not (n in path):
+                    new_path = path.copy() + [n]
+                    frontier.append(new_path)
     return []
-
-
-
