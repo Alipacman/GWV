@@ -1,15 +1,15 @@
-from .Vertex import *
+from vertex import Vertex
+from vertex_type import Vertex_type
 import numpy as np
-
 
 class Gamefield:
 
-    gamefieldArray = []
+    gamefield_array = []
 
     def __init__(self, fieldString):
         self.gamefield_array = self.gamefield_str_into_array(fieldString)
-        self.gamefield_width = len(self.gamefieldArray[0])
-        self.gamefield_height = len(self.gamefieldArray)
+        self.gamefield_width = len(self.gamefield_array[0])
+        self.gamefield_height = len(self.gamefield_array)
 
     def gamefield_str_into_array(self, gamefield_str):
         """
@@ -61,17 +61,17 @@ class Gamefield:
             "s": Vertex_type.goal,
         }
 
-        return switcher.get(self.gamefieldArray[vertex.y][vertex.x])
+        return switcher.get(self.gamefield_array[vertex.y][vertex.x])
 
 
     def find_start_index(self):
         for y in range(self.gamefield_height):
             for x in range(self.gamefield_width):
-                if self.gamefieldArray[y][x] == "s":
+                if self.gamefield_array[y][x] == "s":
                     return (y,x)
 
 
     def print_path(self, path : [Vertex]):
         for vertex in path:
-            self.gamefieldArray[vertex.y][vertex.x] = "."
-        print (self.gamefield_array_into_str(self.gamefieldArray))
+            self.gamefield_array[vertex.y][vertex.x] = "."
+        print (self.gamefield_array_into_str(self.gamefield_array))
