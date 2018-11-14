@@ -9,7 +9,7 @@ def depth_first_search(start_node):
 
         if (last_node.is_goal()):
             print("DFS found path: ")
-            print(path)
+            # print(path)
             return path
         else:
             neighbours = last_node.get_neighbours()
