@@ -75,6 +75,33 @@ class Gamefield:
                 if (self.gamefield_array[y][x] == self.gamefield_array[vertex.y][vertex.x]) and (vertex.x != x or vertex.y != y):
                     return (y,x)
 
+    def portal_coordinates(self, portal_number: int):
+        """
+        Returns an array of the coordinates for a given portal number
+        The array is empty, if no portal was found.
+        """
+        str(portal_number)
+        # TODO
+
+    def manhattan_distance(self, v1: Vertex, v2: Vertex):
+        """
+        Calculate the manhattan distance between two nodes, 
+        taking into account portals, assuming portal names start at "1", counting upwards
+        """
+        distances = []
+        # direct distance (x and y coordinates)
+        distances.append(abs(v1.x - v2.x) + abs(v1.y - v2.y))
+        
+        # portal distances
+        portal_number = 1
+        portal_coords = portal_coordinates(portal_number)
+
+        while len(portal_coords) > 0:
+            # TODO add both possibilites to distances
+
+        return min(distances)
+    
+
     def print_path(self, path : [Vertex]):
         for vertex in path:
             self.gamefield_array[vertex.y][vertex.x] = "."
