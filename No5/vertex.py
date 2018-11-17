@@ -18,42 +18,40 @@ class Vertex:
              raise ValueError('type not valid')
 
 
-    def get_neighbours(self):
-
+    def get_surrounding_neighbours(self):
         if (self.gamefield.check_possible_field(self.y + 1, self.x)):
-            neighbour_down = Vertex(self.y + 1, self.x, self, self.gamefield)
-            if neighbour_down.vertex_type == Vertex_type.portal:
-                self.get_portal_neighbour(neighbour_down)
-            else:
-                self.neighbours.append(neighbour_down)
+            self.get_neighbour(self.y + 1, self.x)
         if (self.gamefield.check_possible_field(self.y, self.x + 1)):
-            neighbour_right = Vertex(self.y, self.x + 1, self, self.gamefield)
-            if neighbour_right.vertex_type == Vertex_type.portal:
-                self.get_portal_neighbour(neighbour_right)
-            else:
-                self.neighbours.append(neighbour_right)
+            self.get_neighbour(self.y, self.x + 1)
         if (self.gamefield.check_possible_field(self.y - 1, self.x)):
-            neighbour_up = Vertex(self.y - 1, self.x, self, self.gamefield)
-            if neighbour_up.vertex_type == Vertex_type.portal:
-                self.get_portal_neighbour(neighbour_up)
-            else:
-                self.neighbours.append(neighbour_up)
+            self.get_neighbour(self.y - 1, self.x)
         if (self.gamefield.check_possible_field(self.y, self.x - 1)):
-            neighbour_left = Vertex(self.y, self.x - 1, self, self.gamefield)
-            if neighbour_left.vertex_type == Vertex_type.portal:
-                self.get_portal_neighbour(neighbour_left)
-            else:
-                self.neighbours.append(neighbour_left)
+            self.get_neighbour(self.y, self.x - 1)
         return self.neighbours
+
+    def get_neighbour(self, y_pos, x_pos):
+        neighbour = Vertex(y_pos, x_pos, self, self.gamefield)
+        if neighbour.vertex_type == Vertex_type.portal:
+            self.get_portal_neighbour(neighbour)
+        else:
+            self.neighbours.append(neighbour)
 
     def is_goal(self):
         return self.vertex_type == Vertex_type.goal
 
 
     def get_portal_neighbour(self, portal_neighbour):
+        #print(self.gamefield.find_portal_exit(portal_neighbour))
         portal_exit_loc = self.gamefield.find_portal_exit(portal_neighbour)
         portal_exit = Vertex(portal_exit_loc[0], portal_exit_loc[1], self, self.gamefield)
         self.neighbours.append(portal_exit)
+
+    def getCost(self, akk = 0):
+        if not (self.parentEdge.source_vertex == None):
+            akk += self.parentEdge.weight
+            return self.parentEdge.source_vertex.getCost(akk)
+        return akk
+
 
     def __eq__(self, other):
         """Overrides the default implementation"""

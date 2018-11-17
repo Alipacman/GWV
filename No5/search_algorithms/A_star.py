@@ -1,10 +1,12 @@
 from collections import deque
+import math
 
 def breadth_first_search(start_node):
 
-    frontier = deque([[start_node]])
-
-    while len(frontier) != 0:
+    closedSet = []
+    openSet = [start_node]
+    
+    while len(openSet) != 0:
 
         path = frontier.popleft()
         last_node = path[-1]

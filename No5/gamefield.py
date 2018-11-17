@@ -1,6 +1,7 @@
 from vertex import Vertex
 from vertex_type import Vertex_type
 import numpy as np
+import math
 
 class Gamefield:
 
@@ -10,6 +11,7 @@ class Gamefield:
         self.gamefield_array = self.gamefield_str_into_array(fieldString)
         self.gamefield_width = len(self.gamefield_array[0])
         self.gamefield_height = len(self.gamefield_array)
+        self.goal_cord = self.find_char("g")
 
     def gamefield_str_into_array(self, gamefield_str):
         """
@@ -63,46 +65,36 @@ class Gamefield:
         return switcher.get(self.gamefield_array[vertex.y][vertex.x])
 
 
-    def find_start_index(self):
+    def find_char(self, char):
         for y in range(self.gamefield_height):
             for x in range(self.gamefield_width):
-                if self.gamefield_array[y][x] == "s":
+                if self.gamefield_array[y][x] == char:
                     return (y,x)
 
     def find_portal_exit(self, vertex : Vertex):
         for y in range(self.gamefield_height):
             for x in range(self.gamefield_width):
-                if (self.gamefield_array[y][x] == self.gamefield_array[vertex.y][vertex.x]) and (vertex.x != x or vertex.y != y):
+                if (self.gamefield_array[y][x] == self.gamefield_array[vertex.y][vertex.x] ) and (not(vertex.x == x and vertex.y == y)):
                     return (y,x)
 
-    def portal_coordinates(self, portal_number: int):
+    def manhattan_distance(self, v1: Vertex):
         """
-        Returns an array of the coordinates for a given portal number
-        The array is empty, if no portal was found.
-        """
-        str(portal_number)
-        # TODO
-
-    def manhattan_distance(self, v1: Vertex, v2: Vertex):
-        """
-        Calculate the manhattan distance between two nodes, 
+        Calculate the manhattan distance between two nodes,
         taking into account portals, assuming portal names start at "1", counting upwards
         """
-        distances = []
+        distance = math.inf
+
+        v2 = self.goal_cord
+
         # direct distance (x and y coordinates)
-        distances.append(abs(v1.x - v2.x) + abs(v1.y - v2.y))
-        
-        # portal distances
-        portal_number = 1
-        portal_coords = portal_coordinates(portal_number)
+        #works for portals, cause they work like portal portals lol
+        distance = (abs(v1.x - v2[1]) + abs(v1.y - v2[0]))
 
-        while len(portal_coords) > 0:
-            # TODO add both possibilites to distances
-
-        return min(distances)
+        return distance
     
 
     def print_path(self, path : [Vertex]):
         for vertex in path:
-            self.gamefield_array[vertex.y][vertex.x] = "."
+            if vertex.vertex_type != Vertex_type.portal:
+                self.gamefield_array[vertex.y][vertex.x] = "."
         print (self.gamefield_array_into_str(self.gamefield_array))
