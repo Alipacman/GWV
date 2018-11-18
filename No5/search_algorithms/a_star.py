@@ -1,18 +1,18 @@
 from collections import deque
-import math
 
-def breadth_first_search(start_node):
+def a_star_search(start_node):
 
-    closedSet = []
-    openSet = [start_node]
-    
-    while len(openSet) != 0:
+    frontier = [[start_node]]
 
-        path = frontier.popleft()
+    while len(frontier) != 0:
+
+        frontier.sort(key=lambda x: x[-1].a_star_cost, reverse=False)
+
+        path = frontier.pop(0)
         last_node = path[-1]
 
         if (last_node.is_goal()):
-            print("BFS found path: ")
+            print("A_star found path: ")
             # print(path)
             return path
         else:

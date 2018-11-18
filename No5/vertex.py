@@ -17,6 +17,8 @@ class Vertex:
         if self.vertex_type not in (Vertex_type.unvisited, Vertex_type.visited, Vertex_type.blocked, Vertex_type.start, Vertex_type.goal, Vertex_type.portal):
              raise ValueError('type not valid')
 
+        self.a_star_cost = self.a_star_cost()
+
 
     def get_surrounding_neighbours(self):
         if (self.gamefield.check_possible_field(self.y + 1, self.x)):
@@ -51,6 +53,9 @@ class Vertex:
             akk += self.parentEdge.weight
             return self.parentEdge.source_vertex.getCost(akk)
         return akk
+
+    def a_star_cost (self):
+        return self.getCost() + self.gamefield.manhattan_distance(self)
 
 
     def __eq__(self, other):

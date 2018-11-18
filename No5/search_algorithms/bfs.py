@@ -6,6 +6,7 @@ def breadth_first_search(start_node):
 
     while len(frontier) != 0:
 
+        frontier.so
         path = frontier.popleft()
         last_node = path[-1]
 

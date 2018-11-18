@@ -1,0 +1,14 @@
+2.
+We need to change the heuristic function to work with portals
+, so that it calculates with the position of the portal exit instead
+of the portal entrance
+
+3.
+The algorithm doesn't terminate because an algorthim can't know if it terminates,
+ see the Halting problem.
+
+ 4.The Breadth First search has a time complexity O of all Edges plus all Vertexes, because
+ in the worst case, every node is visited. The space complexity is O(IVI), but when expending,
+ the Frontier grows exponantally.
+
+

@@ -1,3 +1,4 @@
-xxxxxxxxxxxxx
-xs1   1    gx
-xxxxxxxxxxxxx
+xxxxxx
+xs   x
+x   gx
+xxxxxx
